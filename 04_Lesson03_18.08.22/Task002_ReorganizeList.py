@@ -32,7 +32,7 @@ def write_file(list_of_products, list_of_costs):
 
 def read_file():
     data = None
-    with open("products.txt", 'r', encoding='utf-8') as file:
+    with open("Task002.txt", 'r', encoding='utf-8') as file:
         data = file.readlines()
 
     return data
