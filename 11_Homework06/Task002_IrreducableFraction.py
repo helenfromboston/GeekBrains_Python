@@ -10,6 +10,5 @@ for i in range(1, 12):
             continue
         elif math.gcd(i, j) == 1:
             fraction_list.append(f"{i}/{j}")
-            # print(f"{i}/{j}", end=", ")
 
 print(fraction_list)
