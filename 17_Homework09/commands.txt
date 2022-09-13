@@ -1,0 +1,5 @@
+hello - Get a greeting from the bot 👋
+weather - Get the current weather for your location 🌤
+cat - Get a picture of cute cat 😻
+math - Follow this command with your equation to get the result 🤓
+game - Play a guessing game with the bot 🎲
