@@ -49,11 +49,13 @@ def math_msg(message):
             bot.send_message(message.chat.id,'Wrong pattern')
 
 
+game_on = False
 def guess_game(message):
     global my_number
+    global game_on
     game_on = True
     my_number = random.randint(1, 1000)
-    guess_check(message, my_number)
+    invite = bot.send_message(message.chat.id, "Let's play a guessing game! Guess the number I think about from 1 to 1000")
 
 
 def guess_check(message, my_number):
@@ -75,13 +77,6 @@ def guess_check(message, my_number):
         game_on = True
 
 
-@bot.message_handler(commands=['game'])
-def game(message):
-    log(message)
-    invite = bot.send_message(message.chat.id, "Let's play a guessing game! Guess the number I think about from 1 to 1000")
-    bot.register_next_step_handler(invite, guess_game)
-
-
 @bot.message_handler(content_types=["text", "sticker"])
 def main_function(message):
     log(message)
@@ -99,16 +94,10 @@ def main_function(message):
         bot.register_next_step_handler(invite, math_msg)
     elif 'weather' in text.lower():
         weather_msg(message)
-    elif game_on is True:
+    elif text.isdigit() and game_on is True:
         guess_check(message, my_number)
-    # elif 'game' in text.lower():
-    #     invite = bot.send_message(message.chat.id, "Let's play a guessing game! Guess the number I think about")
-    #     bot.register_next_step_handler(invite, guess_game)
-    # elif text.isdigit():
-    #     guess_check
-    
-
- 
+    elif 'game' in text.lower() and game_on is False:
+        guess_game(message)
 
 
 print('server start')
